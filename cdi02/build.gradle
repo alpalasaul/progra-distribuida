@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.krypton'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+// usar weld con un ambiente web
+dependencies {
+    // https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-core
+    implementation group: 'org.jboss.weld.servlet', name: 'weld-servlet-core', version: '5.0.0.SP1'
+    // https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api
+    compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
+}
+
+test {
+    useJUnitPlatform()
+}
