@@ -1,0 +1,12 @@
+com/programacion/servicios/Operaciones.java
+ com.programacion.servicios.Operaciones
+com/programacion/servicios/ServicioLog.java
+ com.programacion.servicios.ServicioLog
+com/programacion/servicios/OperacionesImpl.java
+ com.programacion.servicios.OperacionesImpl
+com/programacion/servicios/ServicioLogImpl.java
+ com.programacion.servicios.ServicioLogImpl
+com/programacion/Principal.java
+ com.programacion.Principal
+com/programacion/config/AppConfig.java
+ com.programacion.config.AppConfig
