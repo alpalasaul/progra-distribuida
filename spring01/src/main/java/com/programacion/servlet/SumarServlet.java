@@ -2,6 +2,7 @@ package com.programacion.servlet;
 
 import com.programacion.servicios.Operaciones;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
