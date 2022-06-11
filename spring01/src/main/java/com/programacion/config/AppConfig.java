@@ -7,22 +7,21 @@ import com.programacion.servicios.ServicioLogImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @ComponentScan(basePackages = "com.programacion.servicios")
 public class AppConfig {
 
-    @Bean // Equivalente a produces en CDI
+    @Bean // Equivalente a producer en CDI
     public ServicioLog createLog() {
         System.out.println("**********PRODUCTOR");
         return new ServicioLogImpl();
     }
 
-    @Bean
-    public Operaciones createOp() {
-        System.out.println("********OP PROD");
-        return new OperacionesImpl();
-    }
+//    @Bean
+//    public Operaciones createOp() {
+//        System.out.println("********OP PROD");
+//        return new OperacionesImpl();
+//    }
 
 }

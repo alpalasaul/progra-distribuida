@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 //public class OperacionesImpl implements Operaciones, InitializingBean, DisposableBean {
-//@Component
+@Component
 public class OperacionesImpl implements Operaciones { // se usa post y pre importando con dependencias
 
     @Autowired
