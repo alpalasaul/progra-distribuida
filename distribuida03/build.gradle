@@ -12,8 +12,8 @@ repositories {
 dependencies {
     implementation group: 'com.sparkjava', name: 'spark-core', version: '2.9.3'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
-    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.20'
-    compileOnly group: 'javax.enterprise', name: 'cdi-api', version: '2.0'
+    implementation 'org.jboss.weld.se:weld-se-core:2.4.6.Final'
+
 
 }
 
