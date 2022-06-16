@@ -1,6 +1,8 @@
 package com.programacion.servicios;
 
-//@ApplicationScoped // se convierte en un componente [managed bean]
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped // se convierte en un componente [managed bean]
 public class ServicioLogImpl implements ServicioLog {
 
     @Override

@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'com.krypton'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.sparkjava', name: 'spark-core', version: '2.9.3'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
+}
+
+test {
+    useJUnitPlatform()
+}

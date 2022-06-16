@@ -1,5 +1,7 @@
 package com.programacion.servicios;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import spark.Request;
 import spark.Response;
 
@@ -7,8 +9,11 @@ import static spark.Spark.*;
 
 //public class HelloService extends HttpServlet {
 
-
+@ApplicationScoped
 public class HelloServiceImpl implements HelloService {
+
+    @Inject
+    private ServicioLog logger;
 
     public static Object handleSumar(Request request, Response response) {
 
@@ -32,6 +37,8 @@ public class HelloServiceImpl implements HelloService {
 
     @Override
     public void rest() {
+        logger.log("Inicializando Servidor Jetty");
+
         staticFiles.location("/public");
         port(8080);
 

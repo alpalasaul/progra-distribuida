@@ -12,11 +12,16 @@ repositories {
 dependencies {
     implementation group: 'com.sparkjava', name: 'spark-core', version: '2.9.3'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
-    implementation 'org.jboss.weld.se:weld-se-core:2.4.6.Final'
-
+    implementation group: 'org.jboss.weld.se', name: 'weld-se-core', version: '5.0.0.SP1'
 
 }
 
 test {
     useJUnitPlatform()
+}
+
+sourceSets {
+    main {
+        output.resourcesDir = file("${buildDir}/classes/java/main")
+    }
 }
