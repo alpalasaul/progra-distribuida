@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.krypton'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+project.ext {
+    helidonversion = '2.5.1'
+}
+
+application {
+    mainClass='org.krypton.Main'
+}
+
+dependencies {
+    // import Helidon dependency management - permite que no pongamos la versión en cada dependencia [esta es una referencia]
+    implementation platform("io.helidon:helidon-dependencies:${project.helidonversion}")
+    // server
+    implementation 'io.helidon.microprofile.server:helidon-microprofile-server'
+}
+
+sourceSets {
+    main {
+        output.resourcesDir = file("${buildDir}/classes/java/main")
+    }
+}

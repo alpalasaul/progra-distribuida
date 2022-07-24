@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id 'io.quarkus' version '2.10.2.Final'
+}
+
+group 'com.krypton'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    quarkusPlatformVersion = '2.10.2.Final'
+}
+
+dependencies {
+    // quarkus
+    implementation enforcedPlatform("io.quarkus.platform:quarkus-bom:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-resteasy-reactive'
+    implementation 'io.quarkus:quarkus-arc'
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    // postgres
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.0'
+    // jackson
+    implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
+}
+

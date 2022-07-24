@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.krypton'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // CDI
+    implementation group: 'org.jboss.weld.servlet', name: 'weld-servlet-core', version: '5.0.1.Final'
+    //DB: postgresql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.0'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
+    // REST
+    implementation group: 'org.jboss.resteasy', name: 'resteasy-core', version: '6.0.1.Final'
+    implementation group: 'org.jboss.resteasy', name: 'resteasy-servlet-initializer', version: '6.0.1.Final'
+    implementation group: 'org.jboss.resteasy', name: 'resteasy-jackson2-provider', version: '6.0.1.Final'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    // Integrar CDI + REST
+    implementation group: 'org.jboss.resteasy', name: 'resteasy-cdi', version: '6.0.1.Final'
+
+}
