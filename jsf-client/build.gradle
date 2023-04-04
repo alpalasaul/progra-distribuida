@@ -1,0 +1,45 @@
+plugins {
+    id 'io.openliberty.tools.gradle.Liberty' version '3.3.1'
+    id "io.freefair.lombok" version "6.3.0"
+    id 'war'
+}
+
+group 'com.programing'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:9.1.0'
+    compileOnly group: 'org.eclipse.microprofile', name: 'microprofile', version: '5.0'
+    compileOnly group: 'jakarta.faces', name: 'jakarta.faces-api', version: '4.0.1'
+    implementation 'org.primefaces:primefaces:11.0.0:jakarta'
+}
+
+clean.dependsOn 'libertyStop'
+
+sourceSets {
+    main {
+        output.resourcesDir = file("${buildDir}/classes/java/main")
+    }
+}
+
+ext  {
+    liberty.server.var.'app.context.root' = project.name
+}
+
+apply plugin: 'liberty'
+
+liberty {
+    server {
+        name = 'my-server'
+
+        packageLiberty {
+            packageName = "mp-client"
+            include = "runnable"
+        }
+    }
+}
+

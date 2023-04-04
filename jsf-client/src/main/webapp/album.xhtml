@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Music App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</h:head>
+<h:body>
+
+   <div class="mx-10 my-10">
+       <h1 class="font-bold text-4xl text-center">
+           Lista de albumes
+       </h1>
+       <div class="flex justify-around mt-10">
+           <p:commandButton action="cantante?faces-redirect=true" class="mx-1" value="Lista de cantantes"></p:commandButton>
+           <p:commandButton action="agregarCantante?faces-redirect=true" class="mx-1" value="Agregar cantante"></p:commandButton>
+           <p:commandButton action="album?faces-redirect=true" class="mx-1" value="Lista de albums"></p:commandButton>
+           <p:commandButton action="agregarAlbum?faces-redirect=true" class="mx-1" value="Agregar album"></p:commandButton>
+       </div>
+       <p:growl id="mensaje" showDetail="true" showSummary="false"/>
+       <div class="mt-10">
+           <h:form id="form">
+               <div class="card">
+                   <p:dataTable id="table" editable="true"
+                                styleClass="text-align: center" var="album" value="#{albumController.albumList}">
+                       <p:column headerText="Id">
+                           <h:outputText value="#{album.id}" />
+                       </p:column>
+
+                       <p:column headerText="Title">
+                           <p:cellEditor>
+                               <f:facet name="output">
+                                   <h:outputText value="#{album.title}"/>
+                               </f:facet>
+                               <f:facet name="input">
+                                   <p:inputText id="title" value="#{album.title}" style="width:100%"/>
+                               </f:facet>
+                           </p:cellEditor>
+                       </p:column>
+
+                       <p:column headerText="Release Date">
+                           <p:cellEditor>
+                               <f:facet name="output">
+                                   <h:outputText value="#{album.releaseDate}"/>
+                               </f:facet>
+                               <f:facet name="input">
+                                   <p:inputText id="date" value="#{album.releaseDate}" style="width:100%"/>
+                               </f:facet>
+                           </p:cellEditor>
+                       </p:column>
+
+                       <p:column headerText="Singer">
+                           <h:outputText value="#{album.singer.firstName} #{album.singer.lastName}" />
+                           <br/>
+                           <h:outputText value="#{album.singer.birthDate}" />
+                       </p:column>
+
+                       <p:column style="width: 8rem" headerText="Editar" class="c1n">
+                           <p:rowEditor editTitle="Editar fila" cancelTitle="Cancelar" saveTitle="Guardar"/>
+                       </p:column>
+
+                       <p:column headerText="Eliminar">
+                           <p:commandButton value="Eliminar" icon="pi pi-trash" styleClass="ui-button-danger"
+                                            style="margin-right: .5rem"
+                                            actionListener="#{albumController.delete(album.id)}"
+                                            update=":form:table, mensaje"/>
+                       </p:column>
+
+                       <p:ajax event="rowEdit" listener="#{albumController.onRowEdit}" update=":form:table, mensaje"/>
+                       <p:ajax event="rowEditCancel" listener="#{albumController.onRowCancel}"
+                               update=":form:table, mensaje"/>
+
+
+                   </p:dataTable>
+               </div>
+           </h:form>
+       </div>
+   </div>
+
+</h:body>
+</html>

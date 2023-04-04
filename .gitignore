@@ -1,2 +1,4 @@
-**/.gralde/
+**/.gradle/
 **/build/
+**/wrapper/gradle-wrapper.jar
+**/.idea

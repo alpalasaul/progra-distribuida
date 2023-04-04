@@ -1,0 +1,50 @@
+plugins {
+    id 'io.openliberty.tools.gradle.Liberty' version '3.3.1'
+    id "io.freefair.lombok" version "6.3.0"
+    id 'war'
+}
+
+group 'com.programing'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 17
+targetCompatibility = 17
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Microprofile
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:9.1.0'
+    providedCompile 'org.eclipse.microprofile:microprofile:5.0'
+    // JPA
+    implementation 'org.hibernate.orm:hibernate-core:6.1.2.Final'
+    //DB: postgresql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.0'
+    // Consul
+    implementation 'com.orbitz.consul:consul-client:1.5.3'
+}
+
+clean.dependsOn 'libertyStop'
+
+sourceSets {
+    main {
+        output.resourcesDir = file("${buildDir}/classes/java/main")
+    }
+}
+
+apply plugin: 'liberty'
+
+liberty {
+    server {
+        name = 'my-server'
+
+        packageLiberty {
+            packageName = "mp-album"
+            include = "runnable"
+        }
+    }
+}

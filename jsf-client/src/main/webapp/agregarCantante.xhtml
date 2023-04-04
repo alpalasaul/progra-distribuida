@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Music App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</h:head>
+<h:body>
+
+    <div class="mx-10 my-10">
+        <h1 class="font-bold text-4xl text-center">
+            Agregar nuevo cantante
+        </h1>
+        <div class="flex justify-around mt-10">
+            <p:commandButton action="cantante?faces-redirect=true" class="mx-1" value="Lista de cantantes"></p:commandButton>
+            <p:commandButton action="agregarCantante?faces-redirect=true" class="mx-1" value="Agregar cantante"></p:commandButton>
+            <p:commandButton action="album?faces-redirect=true" class="mx-1" value="Lista de albums"></p:commandButton>
+            <p:commandButton action="agregarAlbum?faces-redirect=true" class="mx-1" value="Agregar album"></p:commandButton>
+        </div>
+        <p:growl id="mensaje" showDetail="true" showSummary="false" />
+        <div class="mt-10 flex justify-center">
+            <h:form id="form">
+                <h:panelGrid columns="3" id="pgSinger">
+
+
+                    <p:outputLabel for="txtNombreSinger" value="Nombre del cantante"/>
+                    <p:inputText id="txtNombreSinger" value="#{singerController.singer.firstName}" required="true"
+                                 requiredMessage="Campo requerido"/>
+                    <p:message for="txtNombreSinger"/>
+
+                    <p:outputLabel for="txtApellidoSinger" value="Apellido del cantante"/>
+                    <p:inputText id="txtApellidoSinger" value="#{singerController.singer.lastName}" required="true"
+                                 requiredMessage="Campo requerido"/>
+                    <p:message for="txtApellidoSinger"/>
+
+                    <p:outputLabel for="txtBirthDate" value="Fecha de cumpleaños"/>
+                    <p:calendar id="txtBirthDate" value="#{singerController.singer.birthDate}" locale="es" required="true"
+                                navigator="true" requiredMessage="Campo requerido"/>
+                    <p:message for="txtBirthDate"/>
+
+                    <p:outputLabel for="txtTitle" value="Titulo de Album"/>
+                    <p:inputText id="txtTitle" value="#{singerController.singer.firstName}" required="true"
+                                 requiredMessage="Campo requerido"/>
+                    <p:message for="txtTitle"/>
+
+                    <p:outputLabel for="txtFecha" value="Fecha de lanzamiento"/>
+                    <p:calendar id="txtFecha" value="#{singerController.album.releaseDate}" locale="es" required="true"
+                                navigator="true" requiredMessage="Campo requerido"/>
+                    <p:message for="txtFecha"/>
+
+                    <h:column />
+                    <div class="mt-5">
+                        <h:column />
+                        <h:column />
+                        <p:commandButton value="Registrar" actionListener="#{singerController.save()}" update=":form:pgSinger, mensaje"/>
+                    </div>
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </div>
+
+</h:body>
+</html>
